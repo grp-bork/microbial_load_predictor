@@ -1,0 +1,11 @@
+Package: MLpredictor
+Title: MLpredictor
+Version: 0.1.0
+Author: Suguru Nishijima
+Maintainer: Suguru Nishijima <suguru.nishijima@embl.de>
+Description: This package contains machine-learning models to predict fecal microbial loads (total microbial cell count per gram) based on the taxonomic profile of the human gut microbiome.
+Depends: R (>= 4.3.1)
+License: BSD license
+Encoding: UTF-8
+Imports: tidyverse, dplyr, readr, vegan, here, xgboost, caret
+RoxygenNote: 7.2.3
