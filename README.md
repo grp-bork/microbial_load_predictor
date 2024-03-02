@@ -1,7 +1,6 @@
 # Microbial load predictor
 
-R function to predict the fecal microbial load (total microbial cell count per gram) based on the taxonomic profile of the human gut microbiome.  
-The prediction model was trained and constructed based on paired data of fecal metagenomes and fecal microbial load in the GALAXY and MetaCardis projects.
+R function to predict the fecal microbial load (total microbial cell count per gram or cell density) based on the taxonomic profile of the human gut microbiome. The prediction model was trained and constructed based on paired data of fecal metagenomes and fecal microbial load in the GALAXY and MetaCardis projects.
 
 - GALAXY dataset (Nishijima S et al, in preparation)
 
@@ -36,7 +35,7 @@ Species-level taxonomic profiles prepared by the following taxonomic profilers (
 git clone https://git.embl.de/grp-bork/microbial-load-predictor.git
 ```
 
-- On R
+- On R (inside the downloaded folder)
 ```
 devtools::install()
 library("MLpredictor")
@@ -58,6 +57,8 @@ The test data comes from `Franzosa EA et al., 2018` including Crohn's disease an
 [Gut microbiome structure and metabolic activity in inflammatory bowel disease](https://www.nature.com/articles/s41564-018-0306-4)
 
 ```
+library(tidyverse)
+
 # read input file (mOTUs v2.5)
 input <- read.delim("test_data/Franzosa_2018_IBD.motus25.tsv", header = T, row.names = 1, check.names = F) 
 
