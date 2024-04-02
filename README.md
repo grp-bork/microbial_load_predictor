@@ -1,14 +1,9 @@
-# Microbial load predictor
+# Microbial load predictor (MLP)
 
-R function to predict the fecal microbial load (total microbial cell count per gram or cell density) based on the taxonomic profile of the human gut microbiome. The prediction model was trained and constructed based on paired data of fecal metagenomes and fecal microbial load in the GALAXY and MetaCardis projects.
+R function to predict the fecal microbial load (total microbial cell count per gram or cell density) based on the taxonomic profile of the human gut microbiome. The prediction model was trained and constructed based on paired data of fecal metagenomes and fecal microbial load in the GALAXY and MetaCardis projects. Please also see the website for more information on this tool https://microbiome-tools.embl.de/mlp/.
 
-- GALAXY dataset (Nishijima S et al, 2024, bioRxiv)
-
-Fecal microbial load is a major determinant of gut microbiome variation and a confounder for disease associations
-
-Suguru Nishijima, Evelina Stankevic, Oliver Aasmets, Thomas S. B. Schmidt, Naoyoshi Nagata, Marisa Isabell Keller, Pamela Ferretti, Helene Bæk Juel, Anthony Fullam, Shahriyar Mahdi Robbani, Christian Schudoma, Johanne Kragh Hansen, Louise Aas Holm, Mads Israelsen, Robert Schierwagen, Nikolaj Torp, Manimozhiyan Arumugam, Flemming Bendtsen, Charlotte Brøns, Cilius Esmann Fonvig, Jens-Christian Holm, Trine Nielsen, Julie Steen Pedersen, Maja Sofie Thiele, Jonel Trebicka, Elin Org, Aleksander Krag, Torben Hansen, Michael Kuhn, and Peer Bork, on behalf of the GALAXY and MicrobLiver Consortia
-
-Preprint: https://www.biorxiv.org/content/10.1101/2024.03.18.584290v1
+- GALAXY dataset (Nishijima S et al, 2024, bioRxiv)  
+[Fecal microbial load is a major determinant of gut microbiome variation and a confounder for disease associations](https://www.biorxiv.org/content/10.1101/2024.03.18.584290v1)
 
 - MetaCardis dataset (Forslund, SK et al, 2021)  
 [Combinatorial, additive and dose-dependent drug–microbiome associations](https://www.nature.com/articles/s41586-021-04177-9)
@@ -20,7 +15,7 @@ Preprint: https://www.biorxiv.org/content/10.1101/2024.03.18.584290v1
 - here
 
 ## Input file
-Species-level taxonomic profiles prepared by the following taxonomic profilers (the default output) are supported. 
+Species-level taxonomic profiles prepared by the following taxonomic profilers (the default output) are supported. Example files from these profilers are available in the `test_data` folder.  
 
 - mOTUs v2.5 (Milanese A et al., 2019)  
 [Microbial abundance, activity and population genomic profiling with mOTUs2](https://www.nature.com/articles/s41467-019-08844-4)
@@ -28,10 +23,10 @@ Species-level taxonomic profiles prepared by the following taxonomic profilers (
 - mOTUs v3.0 (Ruscheweyh HJ et al., 2022)  
 [Cultivation-independent genomes greatly expand taxonomic-profiling capabilities of mOTUs across various environments](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-022-01410-z)
 
-- MetaPhlAn3 (Beghini F et al., 2021) (mpa_v30_CHOCOPhlAn_201901)
+- MetaPhlAn3 (Beghini F et al., 2021) (mpa_v30_CHOCOPhlAn_201901)  
 [Integrating taxonomic, functional, and strain-level profiling of diverse microbial communities with bioBakery 3](https://elifesciences.org/articles/65088)
 
-- MetaPhlAn4 (Blanco-Míguez A et al., 2023) (mpa_vJan21_CHOCOPhlAnSGB_202103)
+- MetaPhlAn4 (Blanco-Míguez A et al., 2023) (mpa_vJan21_CHOCOPhlAnSGB_202103)  
 [Extending and improving metagenomic taxonomic profiling with uncharacterized species using MetaPhlAn 4](https://www.nature.com/articles/s41587-023-01688-w)
 
 
