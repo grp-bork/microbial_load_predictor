@@ -1,6 +1,6 @@
 #' Function to predict fecal microbial load based on species-level taxonomic profile of the human gut microbiome.
 #' This function accepts the defaults outputs by mOTUs (v2.5 and v3) and metaphlan (v3 and v4) profilers.
-#' @title MLpredictor
+#' @title MLP
 #' @importFrom stats predict
 #' @importFrom dplyr %>%
 #' @importFrom here here
@@ -10,7 +10,7 @@
 #' @param profiler A profiler and its version used to generate the specie-level taxonomic profile. "motus2", "motus3", "metaphlan3", or "metaphlan4". 
 #' @param output Output format. "load": predicted microbial loads, or "qmp": taxonomic profile that takes into account the predicted loads. 
 
-MLpredictor <- function(input, profiler = "motus2", output = "load"){
+MLP <- function(input, profiler = "motus2", output = "load"){
   
   ## read prediction model
   if(grepl("motus2", profiler)){
@@ -26,7 +26,10 @@ MLpredictor <- function(input, profiler = "motus2", output = "load"){
     model.path <- "data/model.metaphlan4.rds" %>% here()
   }
   model <- read_rds(model.path)
-  
+
+  ## change "unassigned" to "-1" (mOTUs v3.0)
+  colnames(input) <- colnames(input) %>% str_replace("unassigned", "-1")
+
   ## add Shannon diversity
   input$`Shannon diversity` <- diversity(input)
 

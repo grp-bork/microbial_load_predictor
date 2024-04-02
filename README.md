@@ -2,7 +2,13 @@
 
 R function to predict the fecal microbial load (total microbial cell count per gram or cell density) based on the taxonomic profile of the human gut microbiome. The prediction model was trained and constructed based on paired data of fecal metagenomes and fecal microbial load in the GALAXY and MetaCardis projects.
 
-- GALAXY dataset (Nishijima S et al, in preparation)
+- GALAXY dataset (Nishijima S et al, 2024, bioRxiv)
+
+Fecal microbial load is a major determinant of gut microbiome variation and a confounder for disease associations
+
+Suguru Nishijima, Evelina Stankevic, Oliver Aasmets, Thomas S. B. Schmidt, Naoyoshi Nagata, Marisa Isabell Keller, Pamela Ferretti, Helene Bæk Juel, Anthony Fullam, Shahriyar Mahdi Robbani, Christian Schudoma, Johanne Kragh Hansen, Louise Aas Holm, Mads Israelsen, Robert Schierwagen, Nikolaj Torp, Manimozhiyan Arumugam, Flemming Bendtsen, Charlotte Brøns, Cilius Esmann Fonvig, Jens-Christian Holm, Trine Nielsen, Julie Steen Pedersen, Maja Sofie Thiele, Jonel Trebicka, Elin Org, Aleksander Krag, Torben Hansen, Michael Kuhn, and Peer Bork, on behalf of the GALAXY and MicrobLiver Consortia
+
+Preprint: https://www.biorxiv.org/content/10.1101/2024.03.18.584290v1
 
 - MetaCardis dataset (Forslund, SK et al, 2021)  
 [Combinatorial, additive and dose-dependent drug–microbiome associations](https://www.nature.com/articles/s41586-021-04177-9)
@@ -22,10 +28,10 @@ Species-level taxonomic profiles prepared by the following taxonomic profilers (
 - mOTUs v3.0 (Ruscheweyh HJ et al., 2022)  
 [Cultivation-independent genomes greatly expand taxonomic-profiling capabilities of mOTUs across various environments](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-022-01410-z)
 
-- MetaPhlAn3 (Beghini F et al., 2021)  
+- MetaPhlAn3 (Beghini F et al., 2021) (mpa_v30_CHOCOPhlAn_201901)
 [Integrating taxonomic, functional, and strain-level profiling of diverse microbial communities with bioBakery 3](https://elifesciences.org/articles/65088)
 
-- MetaPhlAn4 (Blanco-Míguez A et al., 2023)  
+- MetaPhlAn4 (Blanco-Míguez A et al., 2023) (mpa_vJan21_CHOCOPhlAnSGB_202103)
 [Extending and improving metagenomic taxonomic profiling with uncharacterized species using MetaPhlAn 4](https://www.nature.com/articles/s41587-023-01688-w)
 
 
@@ -38,17 +44,17 @@ git clone https://git.embl.de/grp-bork/microbial-load-predictor.git
 - On R (inside the downloaded folder)
 ```
 devtools::install()
-library("MLpredictor")
+library("MLP")
 ```
 
 ## Predicting microbial load
 ```
-load <- MLpredictor(input, "motus2", "load")
+load <- MLP(input, "motus2", "load")
 ```
 
 ## Transforming relative microbiome profile (RMP) to quantitative microbiome profile (QMP)
 ```
-qmp <- MLpredictor(input, "motus2", "qmp")
+qmp <- MLP(input, "motus2", "qmp")
 ```
 Quantitative (absolute) abundance = relative abundance * predicted microbial load
 
@@ -66,10 +72,10 @@ input <- read.delim("test_data/Franzosa_2018_IBD.motus25.tsv", header = T, row.n
 input <- data.frame(t(input), check.names = F)
 
 # predict microbial loads
-load <- MLpredictor(input, "motus2", "load")
+load <- MLP(input, "motus2", "load")
 
 # transform relative microbiome profile (RMP) to quantitative microbiome profile (QMP)
-qmp <- MLpredictor(input, "motus2", "qmp")
+qmp <- MLP(input, "motus2", "qmp")
 
 # plot predicted microbial loads (ggplot2 is required)
 md <- read.delim("test_data/Franzosa_2018_IBD.metadata.tsv", header = T, row.names = 1, check.names = F)
