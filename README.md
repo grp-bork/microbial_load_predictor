@@ -12,7 +12,6 @@ R function to predict the fecal microbial load (total microbial cell count per g
 - R 4.3.1+  
 - vegan
 - tidyverse
-- here
 
 ## Input file
 Species-level taxonomic profiles prepared by the following taxonomic profilers (the default output) are supported. Example files from these profilers are available in the `test_data` folder.  
@@ -66,11 +65,11 @@ input <- read.delim("test_data/Franzosa_2018_IBD.motus25.tsv", header = T, row.n
 # transpose the data
 input <- data.frame(t(input), check.names = F)
 
-# predict microbial loads
-load <- MLP(input, "motus2", "load")
+# predict microbial loads with the MetaCardis model
+load <- MLP(input, "motus25", "metacardis", "load")
 
 # transform relative microbiome profile (RMP) to quantitative microbiome profile (QMP)
-qmp <- MLP(input, "motus2", "qmp")
+qmp <- MLP(input, "motus25", "metacardis", "qmp")
 
 # plot predicted microbial loads (ggplot2 is required)
 md <- read.delim("test_data/Franzosa_2018_IBD.metadata.tsv", header = T, row.names = 1, check.names = F)
