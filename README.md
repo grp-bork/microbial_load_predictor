@@ -31,23 +31,23 @@ Species-level taxonomic profiles prepared by the following taxonomic profilers (
 
 ## How to start
 - On terminal
-```
+```shell
 git clone https://git.embl.de/grp-bork/microbial-load-predictor.git
 ```
 
 - On R (inside the downloaded folder)
-```
+```R
 devtools::install()
 library("MLP")
 ```
 
 ## Predicting microbial load
-```
+```R
 load <- MLP(input, "motus2", "load")
 ```
 
 ## Transforming relative microbiome profile (RMP) to quantitative microbiome profile (QMP)
-```
+```R
 qmp <- MLP(input, "motus2", "qmp")
 ```
 Quantitative (absolute) abundance = relative abundance * predicted microbial load
@@ -56,7 +56,7 @@ Quantitative (absolute) abundance = relative abundance * predicted microbial loa
 The test data comes from `Franzosa EA et al., 2018` including Crohn's disease and ulcerative colitis patients as well as control individuals.  
 [Gut microbiome structure and metabolic activity in inflammatory bowel disease](https://www.nature.com/articles/s41564-018-0306-4)
 
-```
+```R
 library(tidyverse)
 
 # read input file (mOTUs v2.5)
