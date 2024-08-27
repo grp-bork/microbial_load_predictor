@@ -43,12 +43,12 @@ library("MLP")
 
 ## Predicting microbial load
 ```R
-load <- MLP(input, "motus25", "metacardis","load")
+load <- MLP(input, "motus25", "metacardis", "load")
 ```
 
 ## Transforming relative microbiome profile (RMP) to quantitative microbiome profile (QMP)
 ```R
-qmp <- MLP(input, "motus25", "metacardis","qmp")
+qmp <- MLP(input, "motus25", "metacardis", "qmp")
 ```
 Quantitative (absolute) abundance = relative abundance * predicted microbial load
 
