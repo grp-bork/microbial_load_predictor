@@ -11,9 +11,10 @@ input <- data.frame(t(input), check.names = F)
 
 # predict microbial loads
 load <- MLP(input, "motus25", "metacardis", "load")
+write_tsv(load, file = "~/Desktop/temp.tsv")
 
 # transform relative microbiome profile (RMP) to quantitative microbiome profile (QMP)
-qmp <- MLP(input, "motus2", "metacardis", "qmp")
+qmp <- MLP(input, "motus25", "metacardis", "qmp")
 
 # plot predicted microbial loads using ggplot2
 md <- read.delim("test_data/Franzosa_2018_IBD.metadata.tsv", header = T, row.names = 1, check.names = F)
