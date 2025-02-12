@@ -1,5 +1,5 @@
 #' Function to predict fecal microbial load based on species-level taxonomic profile of the human gut microbiome.
-#' This function accepts the defaults outputs by mOTUs (v2.5 and v3), metaphlan (v3 and v4) profilers or .
+#' This function accepts the defaults outputs by mOTUs (v2.5 and v3), metaphlan (v3 and v4) profilers for shotgun metagenomes, or DADA2 with RDP classifier for 16S rRNA gene data.
 #' @title MLP
 #' @importFrom stats predict
 #' @importFrom dplyr %>%
