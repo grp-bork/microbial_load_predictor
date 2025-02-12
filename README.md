@@ -1,9 +1,9 @@
 # Microbial load predictor (MLP)
 
-R function to predict the fecal microbial load (total microbial cell count per gram or cell density) based on the taxonomic profile of the human gut microbiome. The prediction model was trained and constructed based on paired data of fecal metagenomes and fecal microbial load in the GALAXY and MetaCardis projects. Please also see the website for more information on this tool https://microbiome-tools.embl.de/mlp/.
+R function to predict the fecal microbial load (total microbial cell count per gram or cell density) based on the taxonomic profile of the human gut microbiome. The prediction model was trained and constructed based on paired data of fecal metagenomes and fecal microbial load in the GALAXY/MicrobLiver and MetaCardis projects. Please also see the website for more information on this tool https://microbiome-tools.embl.de/mlp/.
 
-- GALAXY dataset (Nishijima S et al, 2024, bioRxiv)  
-[Fecal microbial load is a major determinant of gut microbiome variation and a confounder for disease associations](https://www.biorxiv.org/content/10.1101/2024.03.18.584290v1)
+- GALAXY dataset (Nishijima S et al, 2024)  
+[Fecal microbial load is a major determinant of gut microbiome variation and a confounder for disease associations](https://www.sciencedirect.com/science/article/pii/S0092867424012042)
 
 - MetaCardis dataset (Forslund, SK et al, 2021)  
 [Combinatorial, additive and dose-dependent drug–microbiome associations](https://www.nature.com/articles/s41586-021-04177-9)
@@ -14,7 +14,7 @@ R function to predict the fecal microbial load (total microbial cell count per g
 - tidyverse
 
 ## Input file
-Species-level taxonomic profiles prepared by the following taxonomic profilers (the default output) are supported. Example files from these profilers are available in the `test_data` folder.  
+Input files are species-level taxonomic profiles for shotgun metagenomes and genus-level profiles for 16S rRNA gene data prepared by the following taxonomic profilers (the default output). Example files from these profilers are available in the `test_data` folder.  
 
 - mOTUs v2.5 (Milanese A et al., 2019)  
 [Microbial abundance, activity and population genomic profiling with mOTUs2](https://www.nature.com/articles/s41467-019-08844-4)
@@ -25,8 +25,11 @@ Species-level taxonomic profiles prepared by the following taxonomic profilers (
 - MetaPhlAn3 (Beghini F et al., 2021) (mpa_v30_CHOCOPhlAn_201901)  
 [Integrating taxonomic, functional, and strain-level profiling of diverse microbial communities with bioBakery 3](https://elifesciences.org/articles/65088)
 
-- MetaPhlAn4 (Blanco-Míguez A et al., 2023) (mpa_vJan21_CHOCOPhlAnSGB_202103)  
+- MetaPhlAn4 (Blanco-Míguez A et al., 2023) (mpa_vJan21_CHOCOPhlAnSGB_202103 or mpa_vJun23_CHOCOPhlAnSGB_202307)  
 [Extending and improving metagenomic taxonomic profiling with uncharacterized species using MetaPhlAn 4](https://www.nature.com/articles/s41587-023-01688-w)
+
+- DADA2 with RDP (Blanco-Míguez A et al., 2023) (rdp_train_set_16)  
+[High-resolution sample inference from Illumina amplicon data](https://www.nature.com/articles/nmeth.3869)
 
 
 ## How to start
@@ -43,12 +46,12 @@ library("MLP")
 
 ## Predicting microbial load
 ```R
-load <- MLP(input, "motus25", "metacardis", "load")
+load <- MLP(input_profile, "motus25", "metacardis", "load")
 ```
 
 ## Transforming relative microbiome profile (RMP) to quantitative microbiome profile (QMP)
 ```R
-qmp <- MLP(input, "motus25", "metacardis", "qmp")
+qmp <- MLP(input_profile, "motus25", "metacardis", "qmp")
 ```
 Quantitative (absolute) abundance = relative abundance * predicted microbial load
 
