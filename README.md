@@ -35,7 +35,7 @@ Input files are species-level taxonomic profiles for shotgun metagenomes and gen
 ## How to start
 - On terminal
 ```shell
-git clone https://git.embl.de/grp-bork/microbial-load-predictor.git
+git clone https://git.embl.de/grp-bork/microbial_load_predictor.git
 ```
 
 - On R (inside the downloaded folder)
