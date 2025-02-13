@@ -28,10 +28,10 @@ MLP <- function(input, profiler = "motus25", training_data = "metacardis", outpu
       model.path <- "data/metacardis/model.metaphlan3.rds"
     }
     if(grepl("metaphlan4_mpa_vJan21_CHOCOPhlAnSGB_202103", profiler)){
-      model.path <- "data/metacardis/model.metaphlan4.rds"
+      model.path <- "data/metacardis/model.metaphlan4.mpa_vJan21_CHOCOPhlAnSGB_202103.rds"
     }
     if(grepl("metaphlan4_mpa_vJun23_CHOCOPhlAnSGB_202307", profiler)){
-      model.path <- "data/metacardis/model.metaphlan4.pa_vJun23_CHOCOPhlAnSGB_202307.rds"
+      model.path <- "data/metacardis/model.metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202307.rds"
     }
   }
   
@@ -47,17 +47,19 @@ MLP <- function(input, profiler = "motus25", training_data = "metacardis", outpu
       model.path <- "data/galaxy/model.metaphlan3.rds"
     }
     if(grepl("metaphlan4_mpa_vJan21_CHOCOPhlAnSGB_202103", profiler)){
-      model.path <- "data/galaxy/model.metaphlan4.rds"
+      model.path <- "data/galaxy/model.metaphlan4.mpa_vJan21_CHOCOPhlAnSGB_202103.rds"
     }
     if(grepl("metaphlan4_mpa_vJun23_CHOCOPhlAnSGB_202307", profiler)){
-      model.path <- "data/galaxy/model.metaphlan4.pa_vJun23_CHOCOPhlAnSGB_202307.rds"
+      model.path <- "data/galaxy/model.metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202307.rds"
     }
   }
   
   ## 16S rRNA
   if(grepl("rdp_train_set_16", profiler)){
-    model.path <- "data/16S_rRNA/model.16S_rRNA.rds" %>% here()
+    model.path <- "data/16S_rRNA/model.16S_rRNA.rds"
   }
+
+  cat("Model Path: ", model.path, "\n")
   
   model <- read_rds(model.path)
 
