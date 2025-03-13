@@ -54,13 +54,12 @@ MLP <- function(input, profiler = "motus25", training_data = "metacardis", outpu
     }
   }
   
-  ## 16S rRNA
+  ## 16S rRNA gene model
   if(grepl("rdp_train_set_16", profiler)){
     model.path <- "data/16S_rRNA/model.16S_rRNA.rds"
   }
 
-  cat("Model Path: ", model.path, "\n")
-  
+  cat("Model Path:", model.path, "\n")
   model <- read_rds(model.path)
 
   ## change "unassigned" to "-1" (mOTUs v3.0)
@@ -79,6 +78,13 @@ MLP <- function(input, profiler = "motus25", training_data = "metacardis", outpu
     input[[i]] <- 0
   }
   input <- input[, match(colnames(d.tr), colnames(input))]
+  
+  ## show the number of species detected in the input
+  species_pro <- round(100 * sum(keep) / ncol(d.tr))
+  sprintf(
+    "\nℹ️ INFO: %d species were used in the selected model, and %d (%d%%) were found in the input file. Missing species have been supplemented.\n",
+    ncol(d.tr), sum(keep), species_pro
+  ) %>% message()
   
   ## predict microbial loads  
   input.min <- min(input[input != 0])/2
