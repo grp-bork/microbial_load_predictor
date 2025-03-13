@@ -1,4 +1,6 @@
-# Microbial load predictor (MLP)
+<img src="assets/MLP_logo2.png" alt="logo" width="250">
+
+## Microbial load predictor (MLP)
 
 R function to predict the fecal microbial load (total microbial cell count per gram or cell density) based on the taxonomic profile of the human gut microbiome. The prediction model was trained and constructed based on paired data of fecal metagenomes and fecal microbial load in the GALAXY/MicrobLiver and MetaCardis projects. Please also see the website for more information on this tool https://microbiome-tools.embl.de/mlp/.
 
