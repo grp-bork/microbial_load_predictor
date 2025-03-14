@@ -71,6 +71,10 @@ MLP <- function(input, profiler = "motus25", training_data = "metacardis", outpu
   ## change species names in the model if only mOTUs IDs are used in the input file (for mOTUs v2.5 and v3.0)
   if(grepl("^ref_mOTU", colnames(input)) %>% sum() > 10){
     model$finalModel$xNames <- model$finalModel$xNames %>% str_remove(".* \\[") %>% str_remove("\\]")
+    model$finalModel$feature_names <- model$finalModel$feature_names %>% str_remove(".* \\[") %>% str_remove("\\]")
+    colnames(model$trainingData) <- colnames(model$trainingData) %>% str_remove(".* \\[") %>% str_remove("\\]")
+    
+    message("\nINFO: The species names in the input file appear to be mOTU IDs only. They have been corrected for consistency with the species names used in the prediction model.")
   }
 
   ## check species names in the input file and add missing species if necessary
@@ -87,7 +91,7 @@ MLP <- function(input, profiler = "motus25", training_data = "metacardis", outpu
   ## show the number of species detected in the input
   species_pro <- round(100 * sum(keep) / ncol(d.tr))
   sprintf(
-    "\nℹ️ INFO: %d species were used in the selected model, and %d (%d%%) were found in the input file. Missing species have been supplemented.\n",
+    "\nINFO: %d species were used in the selected model, and %d (%d%%) were found in the input file. Missing species have been supplemented.\n",
     ncol(d.tr), sum(keep), species_pro
   ) %>% message()
   
