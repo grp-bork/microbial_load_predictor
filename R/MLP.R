@@ -67,8 +67,13 @@ MLP <- function(input, profiler = "motus25", training_data = "metacardis", outpu
 
   ## add Shannon diversity
   input$`Shannon diversity` <- diversity(input)
+  
+  ## change species names in the model if only mOTUs IDs are used in the input file (for mOTUs v2.5 and v3.0)
+  if(grepl("^ref_mOTU", colnames(input)) %>% sum() > 10){
+    model$finalModel$xNames <- model$finalModel$xNames %>% str_remove(".* \\[") %>% str_remove("\\]")
+  }
 
-  ## check colnames and add missing species if necessary
+  ## check species names in the input file and add missing species if necessary
   d.tr <- model$trainingData
   d.tr <- d.tr[, -ncol(d.tr)]
   
