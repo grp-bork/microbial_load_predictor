@@ -27,7 +27,7 @@ Input files are species-level taxonomic profiles for shotgun metagenomes and gen
 - **MetaPhlAn3** (Beghini F et al., 2021) (mpa_v30_CHOCOPhlAn_201901)  
 [Integrating taxonomic, functional, and strain-level profiling of diverse microbial communities with bioBakery 3](https://elifesciences.org/articles/65088)
 
-- **MetaPhlAn4** (Blanco-Míguez A et al., 2023) (mpa_vJan21_CHOCOPhlAnSGB_202103 or mpa_vJun23_CHOCOPhlAnSGB_202307)  
+- **MetaPhlAn4** (Blanco-Míguez A et al., 2023) (mpa_vJan21_CHOCOPhlAnSGB_20210, mpa_vJun23_CHOCOPhlAnSGB_202307, mpa_vJun23_CHOCOPhlAnSGB_202403, or mpa_vJan25_CHOCOPhlAnSGB_202503)  
 [Extending and improving metagenomic taxonomic profiling with uncharacterized species using MetaPhlAn 4](https://www.nature.com/articles/s41587-023-01688-w)
 
 - **DADA2 with RDP** (Blanco-Míguez A et al., 2023) (rdp_train_set_16)  
