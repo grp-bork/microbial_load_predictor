@@ -69,6 +69,8 @@ For shotgun metagenomes (species-level taxonomic profile)
 - "metaphlan3"
 - "metaphlan4_mpa_vJan21_CHOCOPhlAnSGB_202103"
 - "metaphlan4_mpa_vJun23_CHOCOPhlAnSGB_202307"
+- "metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202403"
+- "metaphlan4.mpa_vJan25_CHOCOPhlAnSGB_202503"
 
 For 16S rRNA gene data (genus-level taxonomic profile)
 - "rdp_train_set_16" (DADA2 with RDP)
