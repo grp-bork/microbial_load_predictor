@@ -5,10 +5,13 @@
 #' @importFrom dplyr %>%
 #' @importFrom here here
 #' @importFrom readr read_rds
+#' @importFrom stringr str_replace str_remove
+#' @importFrom tibble rownames_to_column
 #' @importFrom vegan diversity
 #' @param input Species-level (metagenome) or genus-level (16S rRNA) taxonomic profile of the gut microbiome.
 #' @param profiler A profiler and its version used to generate the input specie-level taxonomic profile. "motus25", "motus3", "metaphlan3", "metaphlan4_mpa_vJan21_CHOCOPhlAnSGB_202103", "metaphlan4_mpa_vJun23_CHOCOPhlAnSGB_202307", "metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202403", "metaphlan4.mpa_vJan25_CHOCOPhlAnSGB_202503", or "rdp_train_set_16 (16S rRNA)". 
 #' @param output Output format. "load": predicted microbial loads, or "qmp": taxonomic profile that takes into account the predicted loads. 
+#' @export
 
 MLP <- function(input, profiler = "motus25", training_data = "metacardis", output = "load"){
   suppress_all <- function(expr) {
@@ -19,56 +22,56 @@ MLP <- function(input, profiler = "motus25", training_data = "metacardis", outpu
   ## MetaCardis model
   if(grepl("metacardis", training_data)){
     if(grepl("motus25", profiler)){
-      model.path <- "data/metacardis/model.motus25.rds"
+      model.path <- system.file("extdata", "metacardis", "model.motus25.rds", package = "MLP")
     }
     if(grepl("motus3", profiler)){
-      model.path <- "data/metacardis/model.motus3.rds"
+      model.path <- system.file("extdata", "metacardis", "model.motus3.rds", package = "MLP")
     }
     if(grepl("metaphlan3", profiler)){
-      model.path <- "data/metacardis/model.metaphlan3.rds"
+      model.path <- system.file("extdata", "metacardis", "model.metaphlan3.rds", package = "MLP")
     }
     if(grepl("metaphlan4_mpa_vJan21_CHOCOPhlAnSGB_202103", profiler)){
-      model.path <- "data/metacardis/model.metaphlan4.mpa_vJan21_CHOCOPhlAnSGB_202103.rds"
+      model.path <- system.file("extdata", "metacardis", "model.metaphlan4.mpa_vJan21_CHOCOPhlAnSGB_202103.rds", package = "MLP")
     }
     if(grepl("metaphlan4_mpa_vJun23_CHOCOPhlAnSGB_202307", profiler)){
-      model.path <- "data/metacardis/model.metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202307.rds"
+      model.path <- system.file("extdata", "metacardis", "model.metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202307.rds", package = "MLP")
     }
     if(grepl("metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202403", profiler)){
-      model.path <- "data/metacardis/model.metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202403.rds"
+      model.path <- system.file("extdata", "metacardis", "model.metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202403.rds", package = "MLP")
     }
     if(grepl("metaphlan4.mpa_vJan25_CHOCOPhlAnSGB_202503", profiler)){
-      model.path <- "data/metacardis/model.metaphlan4.mpa_vJan25_CHOCOPhlAnSGB_202503.rds"
+      model.path <- system.file("extdata", "metacardis", "model.metaphlan4.mpa_vJan25_CHOCOPhlAnSGB_202503.rds", package = "MLP")
     }
   }
   
   ## GALAXY/MicrobLiver model  
   if(grepl("galaxy", training_data)){
     if(grepl("motus25", profiler)){
-      model.path <- "data/galaxy/model.motus25.rds"
+      model.path <- system.file("extdata", "galaxy", "model.motus25.rds", package = "MLP")
     }
     if(grepl("motus3", profiler)){
-      model.path <- "data/galaxy/model.motus3.rds"
+      model.path <- system.file("extdata", "galaxy", "model.motus3.rds", package = "MLP")
     }
     if(grepl("metaphlan3", profiler)){
-      model.path <- "data/galaxy/model.metaphlan3.rds"
+      model.path <- system.file("extdata", "galaxy", "model.metaphlan3.rds", package = "MLP")
     }
     if(grepl("metaphlan4_mpa_vJan21_CHOCOPhlAnSGB_202103", profiler)){
-      model.path <- "data/galaxy/model.metaphlan4.mpa_vJan21_CHOCOPhlAnSGB_202103.rds"
+      model.path <- system.file("extdata", "galaxy", "model.mpa_vJan21_CHOCOPhlAnSGB_202103.rds", package = "MLP")
     }
     if(grepl("metaphlan4_mpa_vJun23_CHOCOPhlAnSGB_202307", profiler)){
-      model.path <- "data/galaxy/model.metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202307.rds"
+      model.path <- system.file("extdata", "galaxy", "model.mpa_vJun23_CHOCOPhlAnSGB_202307.rds", package = "MLP")
     }
     if(grepl("metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202403", profiler)){
-      model.path <- "data/galaxy/model.metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202403.rds"
+      model.path <- system.file("extdata", "galaxy", "model.mpa_vJun23_CHOCOPhlAnSGB_202403.rds", package = "MLP")
     }
     if(grepl("metaphlan4.mpa_vJan25_CHOCOPhlAnSGB_202503", profiler)){
-      model.path <- "data/galaxy/model.metaphlan4.mpa_vJan25_CHOCOPhlAnSGB_202503.rds"
+      model.path <- system.file("extdata", "galaxy", "model.mpa_vJan25_CHOCOPhlAnSGB_202503.rds", package = "MLP")
     }
   }
   
   ## 16S rRNA gene model
   if(grepl("rdp_train_set_16", profiler)){
-    model.path <- "data/16S_rRNA/model.16S_rRNA.rds"
+    model.path <- system.file("extdata", "16S_rRNA", "model.16S_rRNA.rds", package = "MLP")
   }
 
   cat("Model Path:", model.path, "\n")

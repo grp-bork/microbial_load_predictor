@@ -9,7 +9,7 @@ MLP(input, profiler = "motus25", training_data = "metacardis", output = "load")
 \arguments{
 \item{input}{Species-level (metagenome) or genus-level (16S rRNA) taxonomic profile of the gut microbiome.}
 
-\item{profiler}{A profiler and its version used to generate the input specie-level taxonomic profile. "motus25", "motus3", "metaphlan3", "metaphlan4_mpa_vJan21_CHOCOPhlAnSGB_202103", "metaphlan4_mpa_vJun23_CHOCOPhlAnSGB_202307", or "rdp_train_set_16 (16S rRNA)".}
+\item{profiler}{A profiler and its version used to generate the input specie-level taxonomic profile. "motus25", "motus3", "metaphlan3", "metaphlan4_mpa_vJan21_CHOCOPhlAnSGB_202103", "metaphlan4_mpa_vJun23_CHOCOPhlAnSGB_202307", "metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202403", "metaphlan4.mpa_vJan25_CHOCOPhlAnSGB_202503", or "rdp_train_set_16 (16S rRNA)".}
 
 \item{output}{Output format. "load": predicted microbial loads, or "qmp": taxonomic profile that takes into account the predicted loads.}
 }
