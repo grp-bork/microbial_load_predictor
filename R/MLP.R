@@ -56,16 +56,16 @@ MLP <- function(input, profiler = "motus25", training_data = "metacardis", outpu
       model.path <- system.file("extdata", "galaxy", "model.metaphlan3.rds", package = "MLP")
     }
     if(grepl("metaphlan4_mpa_vJan21_CHOCOPhlAnSGB_202103", profiler)){
-      model.path <- system.file("extdata", "galaxy", "model.mpa_vJan21_CHOCOPhlAnSGB_202103.rds", package = "MLP")
+      model.path <- system.file("extdata", "galaxy", "model.metaphlan4.mpa_vJan21_CHOCOPhlAnSGB_202103.rds", package = "MLP")
     }
     if(grepl("metaphlan4_mpa_vJun23_CHOCOPhlAnSGB_202307", profiler)){
-      model.path <- system.file("extdata", "galaxy", "model.mpa_vJun23_CHOCOPhlAnSGB_202307.rds", package = "MLP")
+      model.path <- system.file("extdata", "galaxy", "model.metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202307.rds", package = "MLP")
     }
     if(grepl("metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202403", profiler)){
-      model.path <- system.file("extdata", "galaxy", "model.mpa_vJun23_CHOCOPhlAnSGB_202403.rds", package = "MLP")
+      model.path <- system.file("extdata", "galaxy", "model.metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202403.rds", package = "MLP")
     }
     if(grepl("metaphlan4.mpa_vJan25_CHOCOPhlAnSGB_202503", profiler)){
-      model.path <- system.file("extdata", "galaxy", "model.mpa_vJan25_CHOCOPhlAnSGB_202503.rds", package = "MLP")
+      model.path <- system.file("extdata", "galaxy", "model.metaphlan4.mpa_vJan25_CHOCOPhlAnSGB_202503.rds", package = "MLP")
     }
   }
   
