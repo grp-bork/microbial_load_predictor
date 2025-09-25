@@ -7,5 +7,5 @@ Description: This package contains machine-learning models to predict fecal micr
 Depends: R (>= 4.3.1)
 License: BSD license
 Encoding: UTF-8
-Imports: tidyverse, dplyr, readr, vegan, here, xgboost, caret
+Imports: tidyverse, dplyr, readr, vegan, here, xgboost, caret, stringr, tibble
 RoxygenNote: 7.3.2

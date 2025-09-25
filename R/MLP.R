@@ -14,6 +14,8 @@
 #' @export
 
 MLP <- function(input, profiler = "motus25", training_data = "metacardis", output = "load"){
+  input.original <- input
+  
   suppress_all <- function(expr) {
     suppressWarnings(suppressMessages(capture.output(expr)))
   }
@@ -23,24 +25,31 @@ MLP <- function(input, profiler = "motus25", training_data = "metacardis", outpu
   if(grepl("metacardis", training_data)){
     if(grepl("motus25", profiler)){
       model.path <- system.file("extdata", "metacardis", "model.motus25.rds", package = "MLP")
+      tr.path <- system.file("extdata", "metacardis", "model.motus25.tr.rds", package = "MLP")
     }
     if(grepl("motus3", profiler)){
       model.path <- system.file("extdata", "metacardis", "model.motus3.rds", package = "MLP")
+      tr.path <- system.file("extdata", "metacardis", "model.motus3.tr.rds", package = "MLP")      
     }
     if(grepl("metaphlan3", profiler)){
       model.path <- system.file("extdata", "metacardis", "model.metaphlan3.rds", package = "MLP")
+      tr.path <- system.file("extdata", "metacardis", "model.metaphlan3.tr.rds", package = "MLP")
     }
     if(grepl("metaphlan4_mpa_vJan21_CHOCOPhlAnSGB_202103", profiler)){
       model.path <- system.file("extdata", "metacardis", "model.metaphlan4.mpa_vJan21_CHOCOPhlAnSGB_202103.rds", package = "MLP")
+      tr.path <- system.file("extdata", "metacardis", "model.metaphlan4.mpa_vJan21_CHOCOPhlAnSGB_202103.tr.rds", package = "MLP")      
     }
     if(grepl("metaphlan4_mpa_vJun23_CHOCOPhlAnSGB_202307", profiler)){
       model.path <- system.file("extdata", "metacardis", "model.metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202307.rds", package = "MLP")
+      tr.path <- system.file("extdata", "metacardis", "model.metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202307.tr.rds", package = "MLP")
     }
     if(grepl("metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202403", profiler)){
       model.path <- system.file("extdata", "metacardis", "model.metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202403.rds", package = "MLP")
+      tr.path <- system.file("extdata", "metacardis", "model.metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202403.tr.rds", package = "MLP")
     }
     if(grepl("metaphlan4.mpa_vJan25_CHOCOPhlAnSGB_202503", profiler)){
       model.path <- system.file("extdata", "metacardis", "model.metaphlan4.mpa_vJan25_CHOCOPhlAnSGB_202503.rds", package = "MLP")
+      tr.path <- system.file("extdata", "metacardis", "model.metaphlan4.mpa_vJan25_CHOCOPhlAnSGB_202503.tr.rds", package = "MLP")
     }
   }
   
@@ -48,24 +57,31 @@ MLP <- function(input, profiler = "motus25", training_data = "metacardis", outpu
   if(grepl("galaxy", training_data)){
     if(grepl("motus25", profiler)){
       model.path <- system.file("extdata", "galaxy", "model.motus25.rds", package = "MLP")
+      tr.path <- system.file("extdata", "galaxy", "model.motus25.tr.rds", package = "MLP")
     }
     if(grepl("motus3", profiler)){
       model.path <- system.file("extdata", "galaxy", "model.motus3.rds", package = "MLP")
+      tr.path <- system.file("extdata", "galaxy", "model.motus3.tr.rds", package = "MLP")
     }
     if(grepl("metaphlan3", profiler)){
       model.path <- system.file("extdata", "galaxy", "model.metaphlan3.rds", package = "MLP")
+      tr.path <- system.file("extdata", "galaxy", "model.metaphlan3.tr.rds", package = "MLP")
     }
     if(grepl("metaphlan4_mpa_vJan21_CHOCOPhlAnSGB_202103", profiler)){
       model.path <- system.file("extdata", "galaxy", "model.metaphlan4.mpa_vJan21_CHOCOPhlAnSGB_202103.rds", package = "MLP")
+      tr.path <- system.file("extdata", "galaxy", "model.metaphlan4.mpa_vJan21_CHOCOPhlAnSGB_202103.tr.rds", package = "MLP")
     }
     if(grepl("metaphlan4_mpa_vJun23_CHOCOPhlAnSGB_202307", profiler)){
       model.path <- system.file("extdata", "galaxy", "model.metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202307.rds", package = "MLP")
+      tr.path <- system.file("extdata", "galaxy", "model.metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202307.tr.rds", package = "MLP")
     }
     if(grepl("metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202403", profiler)){
       model.path <- system.file("extdata", "galaxy", "model.metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202403.rds", package = "MLP")
+      tr.path <- system.file("extdata", "galaxy", "model.metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202403.tr.rds", package = "MLP")
     }
     if(grepl("metaphlan4.mpa_vJan25_CHOCOPhlAnSGB_202503", profiler)){
       model.path <- system.file("extdata", "galaxy", "model.metaphlan4.mpa_vJan25_CHOCOPhlAnSGB_202503.rds", package = "MLP")
+      tr.path <- system.file("extdata", "galaxy", "model.metaphlan4.mpa_vJan25_CHOCOPhlAnSGB_202503.tr.rds", package = "MLP")
     }
   }
   
@@ -75,6 +91,8 @@ MLP <- function(input, profiler = "motus25", training_data = "metacardis", outpu
   }
 
   cat("Model Path:", model.path, "\n")
+  cat("Training Data Path:", tr.path, "\n")
+  
   model <- read_rds(model.path)
 
   ## change "unassigned" to "-1" (mOTUs v3.0)
@@ -105,18 +123,36 @@ MLP <- function(input, profiler = "motus25", training_data = "metacardis", outpu
   
   ## show the number of species detected in the input
   species_pro <- round(100 * sum(keep) / ncol(d.tr))
+  
   sprintf(
-    "\nINFO: %d species were used in the selected model, and %d (%d%%) were found in the input file. Missing species have been supplemented.\n",
-    ncol(d.tr), sum(keep), species_pro
+    "\nINFO: The input file contains %d samples (rows) and %d species (columns).\n\nAmong the %d species included in the prediction model, %d (%d%%) were found in the input file and used for prediction. Missing species were automatically supplemented.\n\nIf the proportion of matched species is too low (e.g., <50%%), the prediction accuracy may be compromised. Please check the input file.\n",
+    nrow(input.original), ncol(input.original), ncol(d.tr), sum(keep), species_pro
   ) %>% message()
   
   ## predict microbial loads  
   input.min <- min(input[input != 0])/2
-  temp <- suppress_all(
-    pred <- predict(model, scale(log10(input + input.min)))
-  )
   
-  ## output is microbial load
+  if(nrow(input) > 10){
+    ## within dataset normalization (if there are >10 samples)
+    temp <- suppress_all(
+      pred <- predict(model, scale(log10(input + input.min)))
+    )
+  }else{
+    ## external dataset-guided normalization (if there are <=10 samples)
+    tr <- read_rds(tr.path)
+    input.scaled <- scale(log10(input + input.min), center = tr$m, scale = tr$sd)
+    
+    temp <- suppress_all(
+      pred <- predict(model, input.scaled)
+    )
+    
+    sprintf(
+      "\nINFO: The number of samples in the input file is small (%d ≤ 10). Instead of within-dataset scaling, external reference statistics were used for scaling.\n",
+      nrow(input)
+    ) %>% message()
+  }
+  
+  ## if output is microbial load
   if(grepl("load", output)){
     res <- data.frame(load = 10 ^ pred)
     rownames(res) <- rownames(input)
@@ -124,7 +160,7 @@ MLP <- function(input, profiler = "motus25", training_data = "metacardis", outpu
     return(res)
   }
   
-  ## output is quantitative microbiome profile
+  ## if output is quantitative microbiome profile
   if(grepl("qmp", output)){
     keep <- !grepl("Shannon diversity", colnames(input))
     input <- input[, keep]

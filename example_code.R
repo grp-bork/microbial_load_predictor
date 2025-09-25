@@ -1,16 +1,19 @@
 ## example script using test_data
 library(tidyverse)
 library(ggpubr)
-library(MLP)
+library("MLP")
 
 # read input file in the test_data (mOTUs v2.5)
-input <- read.delim("test_data/Franzosa_2018_IBD.motus25.tsv", header = T, row.names = 1, check.names = F) 
+input <- read.delim("../test_data/Franzosa_2018_IBD.motus25.tsv", header = T, row.names = 1, check.names = F) 
 
 # transpose the data
 input <- data.frame(t(input), check.names = F)
 
 # predict microbial loads
 load <- MLP(input, "motus25", "metacardis", "load")
+load2 <- MLP(input[sample(nrow(input), 10), ], "motus25", "metacardis", "load")
+temp <- dplyr::left_join(load2, load, by = "sample ID")
+plot(temp$load.x, temp$load.y)
 
 # transform relative microbiome profile (RMP) to quantitative microbiome profile (QMP)
 qmp <- MLP(input, "motus25", "metacardis", "qmp")
