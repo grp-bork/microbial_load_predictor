@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/grp-bork/microbial_load_predictor,10,6
+/grp-bork/microbial_load_predictor/blob/main/R/MLP.R,8,4
+/grp-bork/microbial_load_predictor/tree/main/R,7,2
+/grp-bork/microbial_load_predictor/tree/main/inst/extdata,7,2
+/grp-bork/microbial_load_predictor/tree/main,6,2
+/grp-bork/microbial_load_predictor/tree/main/inst/extdata/galaxy,2,2
+/grp-bork/microbial_load_predictor/tree/main/inst/extdata/metacardis,2,1
+/grp-bork/microbial_load_predictor/blob/main/DESCRIPTION,1,1
+/grp-bork/microbial_load_predictor/blob/main/man/MLP.Rd,1,1
+/grp-bork/microbial_load_predictor/issues,1,1
