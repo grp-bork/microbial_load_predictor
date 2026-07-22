@@ -1,0 +1,11 @@
+url_path,views_total,views_unique
+/grp-bork/microbial_load_predictor,16,10
+/grp-bork/microbial_load_predictor/issues,6,3
+/grp-bork/microbial_load_predictor/tree/main,3,1
+/grp-bork/microbial_load_predictor/tree/main/inst/extdata,2,2
+/grp-bork/microbial_load_predictor/tree/main/test_data,2,1
+/grp-bork/microbial_load_predictor/blob/eb6d95d750edd678dc78a17941d24ff042da3e99/R/MLP.R,1,1
+/grp-bork/microbial_load_predictor/blob/main/DESCRIPTION,1,1
+/grp-bork/microbial_load_predictor/blob/main/example_code.R,1,1
+/grp-bork/microbial_load_predictor/blob/main/inst/extdata/metacardis/model.metaphlan4.mpa_vJun23_CHOCOPhlAnSGB_202307.tr.rds,1,1
+/grp-bork/microbial_load_predictor/blob/main/test_data/Franzosa_2018_IBD.metaphlan4.tsv,1,1
