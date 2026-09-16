@@ -120,3 +120,12 @@ ggplot(df, aes(x = Disease, y = log10(load), fill = Disease)) +
   theme_bw() +
   geom_boxplot()
 ```
+
+## Funding
+
+<p>
+  <img src="assets/EU_flag.png" alt="Flag of the European Union" height="50">&nbsp;&nbsp;
+  <img src="assets/MICROB-PREDICT_logo.png" alt="MICROB-PREDICT logo" height="50">
+</p>
+
+This project has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No 825694 ([MICROB-PREDICT](https://cordis.europa.eu/project/id/825694)).
